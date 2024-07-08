@@ -122,7 +122,7 @@ class ChatPDF:
             self,
             similarity_model: SimilarityABC = None,
             generate_model_type: str = "auto",
-            generate_model_name_or_path: str = "01ai/Yi-6B-Chat",
+            generate_model_name_or_path: str = "01-ai/Yi-6B-Chat",
             lora_model_name_or_path: str = None,
             corpus_files: Union[str, List[str]] = None,
             save_corpus_emb_dir: str = "./corpus_embs/",
@@ -179,7 +179,8 @@ class ChatPDF:
             self.add_corpus(corpus_files)
         self.save_corpus_emb_dir = save_corpus_emb_dir
         if rerank_model_name_or_path is None:
-            rerank_model_name_or_path = "Xorbits/bge-reranker-base"
+            # rerank_model_name_or_path = "Xorbits/bge-reranker-base"
+            rerank_model_name_or_path = "BAAI/bge-reranker-base"
         if rerank_model_name_or_path:
             self.rerank_tokenizer = AutoTokenizer.from_pretrained(rerank_model_name_or_path, mirror='modelscope')
             self.rerank_model = AutoModelForSequenceClassification.from_pretrained(rerank_model_name_or_path, mirror='modelscope')
